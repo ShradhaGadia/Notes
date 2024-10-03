@@ -1,0 +1,13 @@
+
+{% extends "basic.html" %}
+{% load static %}
+{% block content %}
+        <h1>{% if form.instance.pk %}Edit Note{% else %}New Note{% endif %}</h1>
+        <form method="post" class="styled-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button" type="submit">Save</button>
+        </form>
+        <script src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+        <script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+        {% endblock %}    

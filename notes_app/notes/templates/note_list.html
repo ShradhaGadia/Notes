@@ -1,0 +1,23 @@
+{% extends "basic.html" %}
+
+{% block content %}
+       
+        
+        <ul class="notes-list">
+            {% for note in notes %}
+                <li>
+                    <h3>{{ forloop.counter }}.</h3>
+                    <a href="{% url 'note_detail' pk=note.pk %}">{{ note.title }}</a>
+                    <form method="get" action="{% url 'note_edit' pk=note.pk %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button class="button-inline" type="submit"> Edit</button>
+                    </form>
+                    <form method="post" action="{% url 'note_delete' pk=note.pk %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button class="button-inline" type="submit" onclick="return confirm('The note will be deleted. Continue?')"> Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        
+{% endblock %}

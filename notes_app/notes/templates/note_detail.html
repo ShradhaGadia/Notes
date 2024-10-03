@@ -1,0 +1,15 @@
+{% extends "basic.html" %}
+
+
+{% block content %}
+        <h1>{{ note.title }}</h1>
+        <p>{{ note.content }}</p>
+       
+        <p class="meta">Created at: {{ note.created_at }}</p>
+        <p class="meta">Updated at: {{ note.updated_at }}</p>
+        <div class="actions">
+            <a class="button" href="{% url 'note_edit' pk=note.pk %}">Edit</a>
+        </div>
+    </div>
+
+    {% endblock %}
